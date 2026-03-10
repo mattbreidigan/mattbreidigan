@@ -5,6 +5,7 @@
 <br/>
 
 # Matt
+
 ### Full-Stack Developer
 
 <br/>
@@ -27,6 +28,7 @@
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-0F172A?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  
 </p>
 
 ### Backend
@@ -64,17 +66,18 @@
 
 <br/>
 
-```text
-Background       Chemical Engineering → Software Development
-Experience       7 years, startups to enterprise
-Approach         Systems thinking, clean code, clear communication
-Availability     Open to freelance and contract work
-```
+<br/>
+<div align="left">
+Background     Chemical Engineering → Software Development<br/>
+Experience     7 years, startups to enterprise<br/>
+Approach      Systems thinking, clean code, clear communication<br/>
+Availability   Open to freelance and contract work
+</div>
+<br/>
 
 <br/>
 
 ---
-
 
 <br/>
 
