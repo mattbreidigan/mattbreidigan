@@ -71,7 +71,6 @@
 Background     Chemical Engineering → Software Development<br/>
 Experience     7 years, startups to enterprise<br/>
 Approach      Systems thinking, clean code, clear communication<br/>
-Availability   Open to freelance and contract work
 </div>
 <br/>
 
