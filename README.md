@@ -21,6 +21,16 @@
 
 ---
 
+### Activity
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mattbreidigan&theme=github-dark&hide_border=true&bg_color=0d1117&color=cccccc&line=5BCDEC&point=ffffff" />
+</p>
+
+<br/>
+
+---
+
 ### Frontend
 
 <p>
@@ -28,7 +38,6 @@
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-0F172A?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  
 </p>
 
 ### Backend
@@ -66,13 +75,11 @@
 
 <br/>
 
-<br/>
 <div align="left">
-Background     Chemical Engineering → Software Development<br/>
-Experience     7 years, startups to enterprise<br/>
-Approach      Systems thinking, clean code, clear communication<br/>
+Background &nbsp;&nbsp;&nbsp; Chemical Engineering → Software Development<br/>
+Experience &nbsp;&nbsp;&nbsp; 7 years, startups to enterprise<br/>
+Approach &nbsp;&nbsp;&nbsp; Systems thinking, clean code, clear communication<br/>
 </div>
-<br/>
 
 <br/>
 
