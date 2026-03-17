@@ -21,16 +21,6 @@
 
 ---
 
-### Activity
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mattbreidigan&theme=github-dark&hide_border=true&bg_color=0d1117&color=cccccc&line=5BCDEC&point=ffffff" />
-</p>
-
-<br/>
-
----
-
 ### Frontend
 
 <p>
@@ -80,6 +70,16 @@ Background &nbsp;&nbsp;&nbsp; Chemical Engineering → Software Development<br/>
 Experience &nbsp;&nbsp;&nbsp; 7 years, startups to enterprise<br/>
 Approach &nbsp;&nbsp;&nbsp; Systems thinking, clean code, clear communication<br/>
 </div>
+
+<br/>
+
+---
+
+### Activity
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mattbreidigan&theme=github-dark&hide_border=true&bg_color=0d1117&color=cccccc&line=5BCDEC&point=ffffff" />
+</p>
 
 <br/>
 
