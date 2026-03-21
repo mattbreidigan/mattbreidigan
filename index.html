@@ -241,6 +241,28 @@ nav.stuck .nav-a:hover{color:var(--s7)}
 .how-item:hover{color:var(--p1);padding-left:10px;background:var(--s0)}
 .how-item em{font-size:10px;font-style:normal;color:var(--p1);letter-spacing:.06em;white-space:nowrap;font-weight:500;opacity:.7}
 
+/* CERTIFICATES */
+#certs{background:var(--s1)}
+.cert-slider-wrap{margin-top:72px;position:relative;overflow:hidden;}
+.cert-slider-wrap::before,.cert-slider-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
+.cert-slider-wrap::before{left:0;background:linear-gradient(90deg,var(--s1) 0%,transparent 100%)}
+.cert-slider-wrap::after{right:0;background:linear-gradient(270deg,var(--s1) 0%,transparent 100%)}
+.cert-track{display:flex;gap:20px;width:max-content;animation:certSlide 28s linear infinite;}
+.cert-track:hover{animation-play-state:paused}
+@keyframes certSlide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.cert-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--r);width:320px;flex-shrink:0;position:relative;overflow:hidden;transition:box-shadow .4s,border-color .3s,transform .35s var(--ease);}
+.cert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--grad1),var(--grad2));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);}
+.cert-card:hover{box-shadow:var(--shadow2);border-color:var(--s3);transform:translateY(-3px)}
+.cert-card:hover::before{transform:scaleX(1)}
+.cert-img{width:100%;height:160px;overflow:hidden;border-radius:var(--r) var(--r) 0 0;display:flex;align-items:center;justify-content:center;padding:20px 28px;border-bottom:1px solid var(--rule);transition:background .4s;}
+.cert-img img{width:100%;height:100%;object-fit:contain;transition:transform .5s var(--ease2);}
+.cert-card:hover .cert-img img{transform:scale(1.06)}
+.cert-body{padding:22px 24px 26px}
+.cert-issuer{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--p1);margin-bottom:8px;opacity:.8}
+.cert-name{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--s7);line-height:1.18;margin-bottom:8px}
+.cert-desc{font-size:12px;line-height:1.7;color:var(--s5);margin-bottom:16px}
+.cert-date{font-size:11px;letter-spacing:.06em;color:var(--s4)}
+
 /* STATEMENT */
 #statement{background:linear-gradient(135deg,#0a2540 0%,#1a1454 50%,#0a2040 100%);padding:160px 0;overflow:hidden;position:relative;}
 #statement::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 10% 50%,rgba(99,91,255,.28) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 90% 30%,rgba(0,196,154,.2) 0%,transparent 60%);}
@@ -370,40 +392,249 @@ footer::before{content:'';position:absolute;inset:0;background:radial-gradient(e
 .m-btn-secondary:hover{border-color:var(--p1);color:var(--p1)}
 
 
-/* RESPONSIVE */
+/* ── HAMBURGER MENU ──────────────────────── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;
+  width:40px;height:40px;gap:5px;background:none;border:none;cursor:pointer;
+  padding:4px;z-index:900;flex-shrink:0;
+}
+.nav-hamburger span{
+  display:block;width:22px;height:1.5px;
+  background:rgba(255,255,255,.85);border-radius:2px;
+  transition:transform .4s var(--ease),opacity .3s,background .3s;
+  transform-origin:center;
+}
+nav.stuck .nav-hamburger span{background:var(--s7)}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* mobile drawer */
+#nav-drawer{
+  position:fixed;inset:0;z-index:790;
+  background:rgba(10,37,64,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;
+  opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
+}
+#nav-drawer.open{opacity:1;pointer-events:all}
+.drawer-link{
+  font-family:var(--serif);font-size:clamp(28px,8vw,48px);font-weight:300;
+  color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:-.01em;
+  padding:10px 0;transition:color .2s,letter-spacing .3s var(--ease);display:block;
+}
+.drawer-link:hover{color:#fff;letter-spacing:.02em}
+.drawer-btn{
+  margin-top:24px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);background:var(--p1);padding:14px 36px;border-radius:var(--r);
+  text-decoration:none;transition:background .25s,box-shadow .25s;
+}
+.drawer-btn:hover{background:var(--p2);box-shadow:var(--shadow-p)}
+
+/* ── RESPONSIVE ──────────────────────────── */
 @media(max-width:1100px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── TABLET (≤900px) ─────────────────────── */
 @media(max-width:900px){
-  :root{--pad:24px}
-  nav.stuck{padding:14px 0}
-  .nav-r .nav-dot,.nav-btn{display:none}
-  .nav-r{gap:22px}
-  .hero-h{font-size:clamp(52px,13vw,80px)}
-  .hero-floor{flex-direction:column;align-items:flex-start;gap:28px;padding-top:28px}
-  .hero-end{align-items:flex-start}
+  :root{--pad:20px}
+
+  /* nav */
+  nav{padding:16px 0}
+  nav.stuck{padding:12px 0}
+  .nav-r{display:none}
+  .nav-hamburger{display:flex}
+  .nav-logo{font-size:16px}
+
+  /* hero */
+  #hero{min-height:100svh}
+  .hero-inner{padding:0 0 56px}
+  .hero-watermark{font-size:clamp(60px,20vw,120px)}
+  .hero-name{font-size:clamp(52px,13vw,96px);margin-bottom:12px}
+  .hero-h{font-size:clamp(20px,5.5vw,32px);margin-bottom:32px}
+  .hero-index{font-size:13px;margin-bottom:20px}
+  .hero-floor{flex-direction:column;align-items:flex-start;gap:24px;padding-top:24px}
+  .hero-end{align-items:flex-start;width:100%}
+  .hero-btns{width:100%;flex-direction:row;gap:10px}
+  .btn-a,.btn-b{flex:1;justify-content:center;padding:15px 16px;font-size:11px;min-height:48px}
   .hero-scroll{display:none}
-  .section{padding:88px 0}
-  .svc{grid-template-columns:40px 1fr 24px}
+  .hero-desc{font-size:14px;max-width:100%}
+
+  /* sections */
+  .section{padding:72px 0}
+  .s-h{font-size:clamp(36px,8vw,56px)}
+
+  /* services */
+  .svc{grid-template-columns:36px 1fr 20px;gap:16px;padding:22px 0}
   .svc-desc{display:none}
+  .svc-name{font-size:20px}
+
+  /* stats */
   #stats{grid-template-columns:1fr 1fr}
-  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}
+  .stat{padding:44px 0 44px var(--pad);border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}
   .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.05)}
+  .stat-n{font-size:clamp(40px,10vw,64px)}
+
+  /* stack */
   .stack-grid{grid-template-columns:1fr 1fr}
-  .about-grid{grid-template-columns:1fr;gap:48px}
-  .proj-grid{grid-template-columns:1fr}
-  #statement{padding:96px 0}
-  footer{padding:72px 0 40px}
-  .ft-top{flex-direction:column;gap:40px}
+  .sk{padding:24px 20px 28px}
+
+  /* projects */
+  .proj-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .work-hd{margin-bottom:32px}
+  .work-ct{font-size:44px}
+  .p-body{padding:14px 16px 18px}
+  .p-name{font-size:17px}
+  .p-blurb{font-size:11px}
+  .p-cat{font-size:9px}
+  .filter-row{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding:4px;scrollbar-width:none}
+  .filter-row::-webkit-scrollbar{display:none}
+
+  /* about */
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-body{font-size:15px}
+
+  /* certs */
+  .cert-slider-wrap{margin-top:48px}
+  .cert-slider-wrap::before,.cert-slider-wrap::after{width:60px}
+  .cert-card{width:260px}
+  .cert-img{height:130px;padding:18px}
+  .cert-body{padding:16px 18px 20px}
+  .cert-name{font-size:16px}
+
+  /* statement */
+  #statement{padding:80px 0}
+
+  /* modal */
+  #modal{padding:0;align-items:flex-end}
+  #modal-panel{border-radius:20px 20px 0 0;max-height:88vh;transform:translateY(100%)}
+  #modal.open #modal-panel{transform:translateY(0)}
+  #modal-content{padding:24px 20px 32px}
+  #modal-name{font-size:clamp(24px,6vw,36px)}
+  #modal-desc{font-size:13px}
+  #modal-meta{grid-template-columns:repeat(3,1fr)}
+  .m-stat{padding:14px 12px}
+  .m-stat-v{font-size:18px}
+  #modal-actions{flex-direction:column;align-items:stretch}
+  .m-btn-primary,.m-btn-secondary{text-align:center;justify-content:center;padding:15px;min-height:48px}
+
+  /* footer */
+  footer{padding:60px 0 32px}
+  .ft-top{flex-direction:column;gap:32px}
   .ft-r{text-align:left}
+  .ft-name{font-size:clamp(28px,8vw,48px)}
+  .ft-btm{flex-direction:column;gap:20px;align-items:flex-start}
+  .ft-nav{flex-wrap:wrap;gap:16px}
 }
+
+/* ── MOBILE (≤480px) ─────────────────────── */
 @media(max-width:480px){
-  .hero-h{font-size:clamp(44px,15vw,64px)}
-  .hero-btns{flex-direction:column;align-items:flex-start}
-  .filter-row{gap:6px}
-  #stats{grid-template-columns:1fr}
-  .stat:nth-child(odd){border-right:none}
+  :root{--pad:16px}
+
+  /* nav — tighter, touch-friendly hamburger */
+  .nav-logo{font-size:15px}
+  .nav-hamburger{width:44px;height:44px}
+
+  /* drawer — larger tap targets */
+  .drawer-link{font-size:clamp(26px,9vw,40px);padding:12px 0}
+  .drawer-btn{padding:16px 40px;font-size:13px;min-height:52px;display:inline-flex;align-items:center;justify-content:center}
+
+  /* hero — readable on small screens */
+  .hero-name{font-size:clamp(44px,16vw,72px)}
+  .hero-h{font-size:clamp(16px,5vw,22px)}
+  .hero-desc{font-size:13px;line-height:1.75}
+  .hero-index{font-size:12px}
+  .btn-a,.btn-b{font-size:10px;padding:14px 10px;min-height:48px}
+
+  /* sections — tighter vertical rhythm */
+  .section{padding:56px 0}
+  .s-h{font-size:clamp(28px,9vw,42px)}
+  .s-sup{font-size:9px;letter-spacing:.18em}
+
+  /* services — full-width, no number */
+  .svc{grid-template-columns:1fr 20px;gap:10px;padding:18px 0}
+  .svc-n{display:none}
+  .svc-name{font-size:17px}
+  .svc-arr{font-size:15px}
+
+  /* stats — 2 col, compact */
+  #stats{grid-template-columns:1fr 1fr}
+  .stat{padding:32px 0 32px var(--pad)}
+  .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.05)}
+  .stat-n{font-size:clamp(36px,11vw,56px)}
+  .stat-l{font-size:10px}
+
+  /* stack — single column on very small screens */
   .stack-grid{grid-template-columns:1fr}
+  .sk{padding:20px 18px 24px}
+  .sk li{font-size:13px;padding:10px 0}
+
+  /* projects — 2-col compact cards, no blurb */
+  .proj-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .p-thumb{aspect-ratio:16/10}
+  .p-body{padding:10px 11px 13px}
+  .p-name{font-size:13px;margin-bottom:4px;line-height:1.2}
+  .p-blurb{display:none}
+  .p-cat{font-size:8px;margin-bottom:4px;gap:3px}
+  .work-hd{margin-bottom:24px;gap:12px}
+  .work-ct{font-size:36px}
+  .filter-wrap{margin-bottom:32px}
+  .filter-label{font-size:9px}
+  .fb{font-size:10px;padding:8px 11px;min-height:36px}
+  .more-btn{padding:13px 32px;font-size:10px;min-height:44px}
+
+  /* about */
+  .about-body{font-size:14px;line-height:1.8}
+  .how-item{font-size:13px;padding:15px 0}
+  .how-item em{font-size:9px}
+
+  /* certs — narrower cards */
+  .cert-slider-wrap{margin-top:40px}
+  .cert-slider-wrap::before,.cert-slider-wrap::after{width:32px}
+  .cert-card{width:200px}
+  .cert-img{height:100px;padding:12px}
+  .cert-body{padding:14px 14px 16px}
+  .cert-name{font-size:13px;line-height:1.25}
+  .cert-desc{font-size:11px;line-height:1.6;margin-bottom:10px}
+  .cert-issuer{font-size:9px}
+  .cert-date{font-size:10px}
+
+  /* statement */
+  #statement{padding:64px 0}
+
+  /* faq */
+  .faq-qt{font-size:14px}
+  .faq-row.open .faq-qt{font-size:16px}
+  .faq-text{font-size:13px}
+  .faq-q{padding:20px 0}
+
+  /* modal — full bottom sheet */
+  #modal-content{padding:20px 16px 32px}
+  #modal-meta{grid-template-columns:1fr 1fr 1fr}
+  .m-stat{padding:12px 8px}
+  .m-stat-l{font-size:9px;letter-spacing:.1em}
+  .m-stat-v{font-size:15px}
+
+  /* footer */
+  footer{padding:48px 0 28px}
+  .ft-nav{gap:12px}
+  .ft-nav a{font-size:10px;min-height:36px;display:inline-flex;align-items:center}
+  .ft-copy{font-size:10px}
+
+  /* AI chat — inset from edges, taller panel */
+  #ai-fab{right:16px;bottom:20px;width:52px;height:52px}
+  #ai-panel{width:calc(100vw - 24px);right:12px;bottom:84px;max-height:calc(100svh - 120px)}
 }
-/* ── AI CHAT WIDGET ────────────────────── */
+@media(hover:none),(pointer:coarse){
+  /* restore normal cursor on touch devices */
+  *{cursor:auto!important}
+  #cur,#curl{display:none!important}
+  /* remove tap highlight flash */
+  a,button{-webkit-tap-highlight-color:transparent}
+  /* ensure interactive elements are always finger-friendly */
+  .nav-btn,.btn-a,.btn-b,.fb,.more-btn,.drawer-btn,.faq-q,
+  .m-btn-primary,.m-btn-secondary,.ai-sug,#ai-send,#ai-fab{
+    min-height:44px;
+  }
+}
 #ai-fab{
   position:fixed;bottom:32px;right:32px;z-index:3000;
   width:56px;height:56px;border-radius:50%;
@@ -502,10 +733,7 @@ footer::before{content:'';position:absolute;inset:0;background:radial-gradient(e
   animation:badgepop .4s var(--ease2);
 }
 @keyframes badgepop{from{transform:scale(0)}to{transform:scale(1)}}
-@media(max-width:480px){
-  #ai-panel{width:calc(100vw - 32px);right:16px;bottom:88px}
-  #ai-fab{right:16px;bottom:20px}
-}
+
 </style>
 </head>
 <body>
@@ -527,11 +755,26 @@ footer::before{content:'';position:absolute;inset:0;background:radial-gradient(e
     <a class="nav-a" href="#services">Services</a>
     <a class="nav-a" href="#stack">Stack</a>
     <a class="nav-a" href="#about">About</a>
+    <a class="nav-a" href="#certs">Certifications</a>
     <a class="nav-a" href="https://github.com/mattbreidigan" target="_blank">GitHub</a>
     <div class="nav-dot"></div>
-    <a class="nav-btn" href="mailto:support@codevaultdevelopment.com">Get in Touch</a>
-  </div></div>
-</nav>
+    <a class="nav-btn" href="/cdn-cgi/l/email-protection#b7c4c2c7c7d8c5c3f7d4d8d3d2c1d6c2dbc3d3d2c1d2dbd8c7dad2d9c399d4d8da">Get in Touch</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div></nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div id="nav-drawer">
+  <a class="drawer-link" href="#work" data-drawer>Work</a>
+  <a class="drawer-link" href="#services" data-drawer>Services</a>
+  <a class="drawer-link" href="#stack" data-drawer>Stack</a>
+  <a class="drawer-link" href="#about" data-drawer>About</a>
+  <a class="drawer-link" href="#certs" data-drawer>Certifications</a>
+  <a class="drawer-link" href="https://github.com/mattbreidigan" target="_blank" data-drawer>GitHub</a>
+  <a class="drawer-btn" href="/cdn-cgi/l/email-protection#b7c4c2c7c7d8c5c3f7d4d8d3d2c1d6c2dbc3d3d2c1d2dbd8c7dad2d9c399d4d8da" data-drawer>Get in Touch</a>
+</div>
 
 <section id="hero">
   <div class="hero-watermark">Breidigan</div>
@@ -547,7 +790,7 @@ footer::before{content:'';position:absolute;inset:0;background:radial-gradient(e
       <div class="hero-end">
         <div class="hero-btns">
           <a class="btn-a" href="#work">View Work →</a>
-          <a class="btn-b" href="mailto:support@codevaultdevelopment.com">Contact</a>
+          <a class="btn-b" href="/cdn-cgi/l/email-protection#b7c4c2c7c7d8c5c3f7d4d8d3d2c1d6c2dbc3d3d2c1d2dbd8c7dad2d9c399d4d8da">Contact</a>
         </div>
         <div class="hero-scroll"><div class="sc-line"></div>Scroll</div>
       </div>
@@ -669,6 +912,142 @@ footer::before{content:'';position:absolute;inset:0;background:radial-gradient(e
   </div>
 </div></section>
 
+<section class="section" id="certs"><div class="container">
+  <div class="s-sup">Credentials</div>
+  <h2 class="s-h">Certifications &amp; <em>training</em></h2>
+  <div class="cert-slider-wrap">
+    <div class="cert-track" id="cert-track">
+
+      <!-- AWS -->
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png&w=340&h=340&fit=contain&output=png" alt="AWS Certified Solutions Architect">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">AWS</div>
+          <div class="cert-name">AWS Certified Solutions Architect — Associate</div>
+          <div class="cert-desc">Validates expertise in designing distributed systems and deploying scalable, fault-tolerant applications on AWS.</div>
+          <div class="cert-date">2023</div>
+        </div>
+      </div>
+
+      <!-- IBM Full Stack -->
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/5a53000d-fed4-4877-b17d-d769a50eeb4e/image.png&w=340&h=340&fit=contain&output=png" alt="IBM Full Stack Software Developer Professional Certificate">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">IBM</div>
+          <div class="cert-name">IBM Full Stack Software Developer Professional Certificate</div>
+          <div class="cert-desc">Covers building, deploying, and managing cloud-native apps with React, Node.js, Python, Docker, Kubernetes, and CI/CD pipelines.</div>
+          <div class="cert-date">2022</div>
+        </div>
+      </div>
+
+      <!-- DeepLearning.AI -->
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/4e3d6f9f-55d7-4ea7-b0e6-f4d4ff543e22/image.png&w=340&h=340&fit=contain&output=png" alt="DeepLearning.AI LangChain Certificate">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">DeepLearning.AI</div>
+          <div class="cert-name">LangChain for LLM Application Development</div>
+          <div class="cert-desc">Hands-on training in building production-grade LLM applications with LangChain, RAG pipelines, and agentic workflows.</div>
+          <div class="cert-date">2024</div>
+        </div>
+      </div>
+
+      <!-- Google -->
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/c5866d05-73f1-4dbf-b2b4-d8c740bb67cf/image.png&w=340&h=340&fit=contain&output=png" alt="Google UX Design Certificate">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">Google</div>
+          <div class="cert-name">Google UX Design Professional Certificate</div>
+          <div class="cert-desc">Foundations of UX research, wireframing, prototyping, and user-centered design across web and mobile products.</div>
+          <div class="cert-date">2022</div>
+        </div>
+      </div>
+
+      <!-- freeCodeCamp -->
+      <div class="cert-card">
+        <div class="cert-img" style="background:#0a0a23;">
+          <img src="https://images.weserv.nl/?url=cdn.freecodecamp.org/platform/universal/fcc_primary.svg&w=340&h=120&fit=contain&output=png" alt="freeCodeCamp Relational Database">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">freeCodeCamp</div>
+          <div class="cert-name">Relational Database Certification</div>
+          <div class="cert-desc">Covers PostgreSQL, SQL fundamentals, Bash scripting, and building data-driven backend systems from scratch.</div>
+          <div class="cert-date">2021</div>
+        </div>
+      </div>
+
+      <!-- Duplicates for seamless loop -->
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png&w=340&h=340&fit=contain&output=png" alt="AWS Certified Solutions Architect">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">AWS</div>
+          <div class="cert-name">AWS Certified Solutions Architect — Associate</div>
+          <div class="cert-desc">Validates expertise in designing distributed systems and deploying scalable, fault-tolerant applications on AWS.</div>
+          <div class="cert-date">2023</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/5a53000d-fed4-4877-b17d-d769a50eeb4e/image.png&w=340&h=340&fit=contain&output=png" alt="IBM Full Stack Software Developer Professional Certificate">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">IBM</div>
+          <div class="cert-name">IBM Full Stack Software Developer Professional Certificate</div>
+          <div class="cert-desc">Covers building, deploying, and managing cloud-native apps with React, Node.js, Python, Docker, Kubernetes, and CI/CD pipelines.</div>
+          <div class="cert-date">2022</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/4e3d6f9f-55d7-4ea7-b0e6-f4d4ff543e22/image.png&w=340&h=340&fit=contain&output=png" alt="DeepLearning.AI LangChain Certificate">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">DeepLearning.AI</div>
+          <div class="cert-name">LangChain for LLM Application Development</div>
+          <div class="cert-desc">Hands-on training in building production-grade LLM applications with LangChain, RAG pipelines, and agentic workflows.</div>
+          <div class="cert-date">2024</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-img" style="background:#f8f9ff;">
+          <img src="https://images.weserv.nl/?url=images.credly.com/size/340x340/images/c5866d05-73f1-4dbf-b2b4-d8c740bb67cf/image.png&w=340&h=340&fit=contain&output=png" alt="Google UX Design Certificate">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">Google</div>
+          <div class="cert-name">Google UX Design Professional Certificate</div>
+          <div class="cert-desc">Foundations of UX research, wireframing, prototyping, and user-centered design across web and mobile products.</div>
+          <div class="cert-date">2022</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-img" style="background:#0a0a23;">
+          <img src="https://images.weserv.nl/?url=cdn.freecodecamp.org/platform/universal/fcc_primary.svg&w=340&h=120&fit=contain&output=png" alt="freeCodeCamp Relational Database">
+        </div>
+        <div class="cert-body">
+          <div class="cert-issuer">freeCodeCamp</div>
+          <div class="cert-name">Relational Database Certification</div>
+          <div class="cert-desc">Covers PostgreSQL, SQL fundamentals, Bash scripting, and building data-driven backend systems from scratch.</div>
+          <div class="cert-date">2021</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div></section>
+
 <div class="mq mq-stripe">
   <div class="mq-t">
     <span>Full-Stack Engineering</span><span class="sep">·</span><span>AI Integration</span><span class="sep">·</span><span>Product Strategy</span><span class="sep">·</span><span>SaaS Architecture</span><span class="sep">·</span><span>Real-time Systems</span><span class="sep">·</span><span>LegalTech</span><span class="sep">·</span><span>HealthTech</span><span class="sep">·</span><span>Web Platforms</span><span class="sep">·</span><span>PropTech</span><span class="sep">·</span>
@@ -738,7 +1117,7 @@ footer::before{content:'';position:absolute;inset:0;background:radial-gradient(e
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 <script>
@@ -1096,6 +1475,43 @@ document.getElementById('proj-grid').addEventListener('click',function(e){
 </div>
 
 <script>
+/* ── HAMBURGER / MOBILE DRAWER ──────────────── */
+(function(){
+  var btn=document.getElementById('nav-hamburger');
+  var drawer=document.getElementById('nav-drawer');
+  var nav=document.getElementById('nav');
+  if(!btn||!drawer)return;
+  function openDrawer(){
+    btn.classList.add('open');
+    drawer.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeDrawer(){
+    btn.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  btn.addEventListener('click',function(){
+    drawer.classList.contains('open')?closeDrawer():openDrawer();
+  });
+  drawer.querySelectorAll('[data-drawer]').forEach(function(el){
+    el.addEventListener('click',closeDrawer);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
+})();
+/* ── TOUCH: disable custom cursor on touch devices ── */
+(function(){
+  var cur=document.getElementById('cur'),curl=document.getElementById('curl');
+  if(!cur||!curl)return;
+  if('ontouchstart' in window||navigator.maxTouchPoints>0){
+    cur.style.display='none';curl.style.display='none';
+    document.body.style.cursor='auto';
+    document.querySelectorAll('[style*="cursor:none"],[style*="cursor: none"]').forEach(function(el){el.style.cursor='auto';});
+  }
+})();
+</script>
+
+<script>
 (function(){
   /* ── AI CHAT ─────────────────────────────── */
   var fab=document.getElementById('ai-fab');
@@ -1258,6 +1674,7 @@ document.getElementById('proj-grid').addEventListener('click',function(e){
       if(c){c.classList.remove('xl');cr.classList.remove('xl');}
     });
   });
+
 })();
 </script>
 </body>
