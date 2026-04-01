@@ -11,9 +11,6 @@
 <br/>
 
 <p align="center" style="max-width:580px; margin: 0 auto; color:#888; font-size:15px; line-height:1.8">
-  I started in chemical engineering, then taught myself to code and never looked back.<br/>
-  For the past 7 years I've been building full-stack web applications, from MVPs for early-stage<br/>
-  startups to scalable systems for enterprise clients.<br/><br/>
   I care about clean architecture, honest communication, and shipping things that actually hold up.
 </p>
 
